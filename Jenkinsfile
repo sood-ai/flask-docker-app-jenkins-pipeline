@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        DOCKER_HUB_REPO = "talha1995/test"
         CONTAINER_NAME = "flask-container"
         STUB_VALUE = "200"
     }
@@ -17,8 +16,6 @@ pipeline {
         stage('Build') {
             steps {
                 //  Building new image
-                sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
-                sh 'docker image tag $DOCKER_HUB_REPO:latest $DOCKER_HUB_REPO:$BUILD_NUMBER'
 
                 //  Pushing Image to Repository
                 sh 'docker push talha1995/test:$BUILD_NUMBER'
